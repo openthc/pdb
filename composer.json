@@ -8,7 +8,7 @@
 		}
 	},
 	"require": {
-		"php": ">=7.0.0",
+		"php": ">=7.3.0",
 		"ext-curl": "*",
 		"ext-date": "*",
 		"ext-json": "*",
@@ -16,11 +16,12 @@
 		"ext-sockets": "*",
 		"ext-PDO": "*",
 		"edoceo/radix": "dev-master",
-		"openthc/common": "dev-master",
-		"slim/slim": "3.12.0",
-		"slim/twig-view": "2.4.0",
-		"twig/twig": "2.6.2"
+		"openthc/common": "dev-master"
 	},
 	"require-dev": {
+		"behat/behat": "3.7.0",
+		"phpmd/phpmd": "2.9.1",
+		"phpstan/phpstan": "0.12.76",
+		"phpunit/phpunit": "9.5.2"
 	}
 }
