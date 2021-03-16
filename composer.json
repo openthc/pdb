@@ -15,6 +15,7 @@
 		"ext-session": "*",
 		"ext-sockets": "*",
 		"ext-PDO": "*",
+		"edoceo/lowline_php": "dev-master",
 		"edoceo/radix": "dev-master",
 		"openthc/common": "dev-master"
 	},
