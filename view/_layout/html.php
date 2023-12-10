@@ -14,30 +14,18 @@ if (empty($_ENV['title'])) {
 <html lang="en" translate="no">
 <head>
 <meta charset="utf-8">
-<meta name="application-name" content="OpenTHC">
+<meta name="application-name" content="OpenTHC Product Database">
 <meta name="viewport" content="initial-scale=1, user-scalable=yes">
 <meta name="theme-color" content="#069420">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="google" content="notranslate">
 <meta http-equiv="cleartype" content="on">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<title><?= h(strip_tags($_ENV['title'])) ?></title>
+<link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=">
+<link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/css/main.css">
+<title><?= __h(strip_tags($data['Page']['title'])) ?></title>
 <style>
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-body {
-	font-family: sans-serif;
-	font-size: 1.1rem;
-}
-
-a {
-	color: inherit;
-}
-
 .hero-wrap {
 	background: #303030;
 	color: #fdfdfd;
@@ -55,39 +43,20 @@ a {
 	margin: 0 0 2rem 0;
 	text-align: center;
 }
-
 .page-thin {
 	font-size: 120%;
 	margin: 0 auto;
 	max-width: 960px;
 }
-.page-thin p {
-	margin: 0 0 0.80rem 0;
-}
-
-.download-link-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.download-link-list div {
-	margin: 0.75rem;
-}
-
-.download-link-list div a {
-	background: #ddd;
-	border: 2px outset #333;
-	border-radius: 8px;
-	padding: 0.50rem 0.75rem;
-}
-
 </style>
 </head>
 <body>
+<?= $this->block('menu-zero.php') ?>
+
 <?php
 
 $x = Session::flash();
-if (!empty($x)) {
+if ( ! empty($x)) {
 
 	$x = str_replace('<div class="good">', '<div class="alert alert-success" role="alert">', $x);
 	$x = str_replace('<div class="info">', '<div class="alert alert-info" role="alert">', $x);
@@ -99,6 +68,7 @@ if (!empty($x)) {
 	echo '</div>';
 
 }
+
 
 echo $this->body;
 
@@ -112,8 +82,7 @@ echo $this->body;
 <div>
 <small>
 <a href="https://directory.openthc.com">Directory</a>
-| <a href="https://lab.openthc.com">Lab</a>
-| <a href="https://vdb.openthc.com">Variety Database</a>
+| <a href="https://vdb.openthc.org">Variety Database</a>
 | <a href="https://api.openthc.org">API</a>
 | <a href="https://twitter.com/openthc"><i class="fab fa-twitter"></i></a>
 | <a href="https://instagram.com/openthc"><i class="fab fa-instagram"></i></a>
@@ -122,7 +91,11 @@ echo $this->body;
 </div>
 </footer>
 
+<script src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+
 <?= $this->foot_script ?>
+
+<?= $this->block('theme-selector.php'); ?>
 
 </body>
 </html>
