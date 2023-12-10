@@ -3,7 +3,7 @@
  *
  */
 
-namespace App\Controller;
+namespace OpenTHC\PDB\Controller;
 
 class Home extends \OpenTHC\Controller\Base
 {

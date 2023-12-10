@@ -30,31 +30,31 @@ $con['DB'] = function() {
 	return new \Edoceo\Radix\DB\SQL(sprintf('pgsql:host=%s;dbname=%s', $cfg['hostname'], $cfg['database']), $cfg['username'], $cfg['password']);
 };
 
-$app->get('/home', 'App\Controller\Home');
+$app->get('/home', 'OpenTHC\PDB\Controller\Home');
 
 // Lookup Specific Datas
-$app->get('/api', 'App\Controller\API')
-	->add('OpenTHC\Middleware\CORS');
+$app->get('/api', 'OpenTHC\PDB\Controller\API');
+	//->add('OpenTHC\Middleware\CORS');
 
 // Lookup Specific Datas
-$app->get('/api/autocomplete', 'App\Controller\Autocomplete')
-	->add('OpenTHC\Middleware\CORS');
+$app->get('/api/autocomplete', 'OpenTHC\PDB\Controller\Autocomplete');
+	//->add('OpenTHC\Middleware\CORS');
 
 // Lookup Specific Datas
-$app->get('/api/search', 'App\Controller\Search');
+$app->get('/api/search', 'OpenTHC\PDB\Controller\Search');
 
 // Trusted Host query /Search to search the network
 //$app->get('/search', 'Example_Search');
-$app->get('/search', 'App\Controller\Search')
+$app->get('/search', 'OpenTHC\PDB\Controller\Search')
 //	->add('Middleware_Verify_HMAC')
 //	->add('Middleware_Verify_Self')
 //	->add('Middleware_Verify_DNS');
 	;
 
-$app->get('/pub', 'App\Controller\Downloads');
-$app->get('/pub/{file}', 'App\Controller\Download');
+$app->get('/pub', 'OpenTHC\PDB\Controller\Downloads');
+$app->get('/pub/{file}', 'OpenTHC\PDB\Controller\Download');
 
-// $app->get('/random', 'App\Controller\Random');
+// $app->get('/random', 'OpenTHC\PDB\Controller\Random');
 
 $app->run();
 

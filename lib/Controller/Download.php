@@ -3,7 +3,7 @@
  * Downloads
  */
 
-namespace App\Controller;
+namespace OpenTHC\PDB\Controller;
 
 use Edoceo\Radix\DB\SQL;
 
