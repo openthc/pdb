@@ -14,7 +14,7 @@ class Search extends \OpenTHC\Controller\Base
 	{
 		$dbc = _dbc();
 
-		$S = new \OpenTHC\PDB\Search();
+		$S = new \OpenTHC\PDB\Search($this->_container);
 		$res = $S->search($_GET['q'], $_GET['p']);
 
 		$data = array(
