@@ -1,5 +1,8 @@
 #!/bin/bash
 #
+# Install Helper
+#
+# SPDX-License-Identifier: NONE
 #
 
 set -o errexit
@@ -7,21 +10,22 @@ set -o errtrace
 set -o nounset
 set -o pipefail
 
-
-BIN_SELF=$(readlink -f "$0")
-APP_ROOT=$(dirname "$BIN_SELF")
+APP_ROOT=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 cd "$APP_ROOT"
 
-composer update --no-ansi --no-dev --no-progress --quiet --classmap-authoritative
+composer install --no-ansi --no-progress --classmap-authoritative
 
-npm install --quiet >/dev/null
+npm install --no-audit --no-fund --package-lock-only
 
-. vendor/openthc/common/lib/lib.sh
-
-copy_bootstrap
-copy_fontawesome
-copy_jquery
+php <<PHP
+<?php
+define('APP_ROOT', __DIR__);
+require_once(APP_ROOT . '/vendor/autoload.php');
+\OpenTHC\Make::install_bootstrap();
+\OpenTHC\Make::install_fontawesome();
+\OpenTHC\Make::install_jquery();
+PHP
 
 #
 # Tailwind
