@@ -33,11 +33,10 @@ npx tailwindcss \
 	--input sass/base.css \
 	--output webroot/css/main.css
 
-OPENTHC_ORIGIN=$(php -r '$x = require_once("etc/config.php"); echo $x["openthc"]["pdb"]["origin"];')
-if [ -z "$OPENTHC_ORIGIN" ]
-then
-	echo "NO ORIGIN"
-	# exit 1
-else
-	curl "$OPENTHC_ORIGIN/home" > webroot/index.html
-fi
+#
+#
+php <<PHP
+<?php
+require_once(__DIR__ . '/boot.php');
+\OpenTHC\Make::create_homepage('pos');
+PHP
